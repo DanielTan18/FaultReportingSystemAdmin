@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "423577906378",
+    "project_id": "faultreportingsystem-c83f7",
+    "storage_bucket": "faultreportingsystem-c83f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423577906378:android:617be1bf076473dc631833",
+        "android_client_info": {
+          "package_name": "com.example.fyp1_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "423577906378-j9tcmmv73f2d4r8vc9vhcg30ikfhkaur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "<REGENERATED API KEY>"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "423577906378-j9tcmmv73f2d4r8vc9vhcg30ikfhkaur.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423577906378:android:1da8566268af16ae631833",
+        "android_client_info": {
+          "package_name": "com.example.fyp_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "423577906378-j9tcmmv73f2d4r8vc9vhcg30ikfhkaur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "<REGENERATED API KEY>"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "423577906378-j9tcmmv73f2d4r8vc9vhcg30ikfhkaur.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
