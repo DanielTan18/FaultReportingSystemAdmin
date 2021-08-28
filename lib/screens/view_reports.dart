@@ -77,14 +77,19 @@ class _ViewReportsScreenState extends State<ViewReportsScreen> {
         )),
         appBar: AppBar(
           iconTheme: IconThemeData(color: black),
-          backgroundColor: white,
+          backgroundColor: Colors.blueAccent,
           elevation: 10.0,
           centerTitle: true,
-          title: CustomText(text: "Report-Thing", size: 22),
+          title: CustomText(
+              text: "Report-Thing",
+              size: 22,
+              color: white,
+              weight: FontWeight.bold),
           leading: Padding(
             padding: const EdgeInsets.only(left: 8.0),
             child: IconButton(
                 icon: Icon(Icons.menu),
+                color: white,
                 onPressed: () => scaffoldKey.currentState.openDrawer()),
           ),
         ),
