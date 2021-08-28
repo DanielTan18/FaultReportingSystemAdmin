@@ -1,27 +1,32 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp_admin/helpers/screen_navigation.dart';
 import 'package:fyp_admin/helpers/style.dart';
 import 'package:fyp_admin/models/faultreport.dart';
-import 'package:fyp_admin/models/user.dart';
-import 'package:fyp_admin/providers/app.dart';
 import 'package:fyp_admin/providers/faultreport.dart';
 import 'package:fyp_admin/providers/user.dart';
 import 'package:fyp_admin/screens/details.dart';
+import 'package:fyp_admin/screens/login.dart';
 import 'package:fyp_admin/widgets/custom_text.dart';
-import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:provider/provider.dart';
 
-class ViewReportsScreen extends StatelessWidget {
+class ViewReportsScreen extends StatefulWidget {
   final FaultReportModel faultreport;
 
   const ViewReportsScreen({Key key, this.faultreport}) : super(key: key);
 
   @override
+  _ViewReportsScreenState createState() => _ViewReportsScreenState();
+}
+
+class _ViewReportsScreenState extends State<ViewReportsScreen> {
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+  @override
   Widget build(BuildContext context) {
     final faultreportprovider = Provider.of<FaultReportProvider>(context);
-    final app = Provider.of<AppProvider>(context);
+    final user = Provider.of<UserProvider>(context);
     faultreportprovider.loadFaultReports();
     faultreportprovider.faultreports.sort((a, b) => b.createdAt - a.createdAt);
     for (var s in faultreportprovider.faultreports) {
@@ -32,17 +37,56 @@ class ViewReportsScreen extends StatelessWidget {
       }
     }
     return Scaffold(
+        key: scaffoldKey,
+        drawer: Drawer(
+            child: ListView(
+          children: [
+            UserAccountsDrawerHeader(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.redAccent, Colors.red[800]],
+                  begin: Alignment.topRight,
+                ),
+              ),
+              accountName: CustomText(
+                  text:
+                      "Admin: " + user.userModel?.name ?? "Loading Username...",
+                  color: white,
+                  weight: FontWeight.bold,
+                  size: 18),
+              accountEmail: CustomText(
+                text: user.userModel?.email ?? "Loading email...",
+                color: white,
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                user.signOut();
+                changeScreenReplacement(context, LoginScreen());
+              },
+              leading: Icon(
+                Icons.exit_to_app,
+                color: Colors.red,
+              ),
+              title: CustomText(
+                text: "Log Out",
+                color: Colors.red,
+              ),
+            ),
+          ],
+        )),
         appBar: AppBar(
           iconTheme: IconThemeData(color: black),
           backgroundColor: white,
           elevation: 10.0,
           centerTitle: true,
-          title: CustomText(text: "View All Reports", size: 20),
-          leading: IconButton(
-              icon: Icon(Icons.close),
-              onPressed: () {
-                Navigator.pop(context);
-              }),
+          title: CustomText(text: "Report-Thing", size: 22),
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: IconButton(
+                icon: Icon(Icons.menu),
+                onPressed: () => scaffoldKey.currentState.openDrawer()),
+          ),
         ),
         backgroundColor: white,
         body: Padding(
@@ -237,16 +281,6 @@ class ViewReportsScreen extends StatelessWidget {
               }),
         ));
   }
-}
-
-Future<Widget> _getImage(BuildContext context, String imageName) async {
-  Image image;
-  await FireStorageService.loadImage(context, imageName).then((value) {
-    image = Image.network(
-      value.toString(),
-      fit: BoxFit.scaleDown,
-    );
-  });
 }
 
 class FireStorageService extends ChangeNotifier {

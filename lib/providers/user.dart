@@ -5,10 +5,6 @@ import 'package:fyp_admin/helpers/faultreport.dart';
 import 'package:fyp_admin/helpers/user.dart';
 import 'package:fyp_admin/models/faultreport.dart';
 import 'package:fyp_admin/models/user.dart';
-import 'package:fyp_admin/helpers/faultreport.dart';
-import 'package:fyp_admin/helpers/user.dart';
-import 'package:fyp_admin/models/faultreport.dart';
-import 'package:fyp_admin/models/user.dart';
 
 enum Status { Uninitialized, Authenticated, Authenticating, Unauthenticated }
 

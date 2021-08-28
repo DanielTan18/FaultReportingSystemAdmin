@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fyp_admin/helpers/faultreport.dart';
-import 'package:fyp_admin/helpers/faultreport.dart';
+
 import '../models/faultreport.dart';
 
 class FaultReportProvider with ChangeNotifier {
@@ -23,7 +23,6 @@ class FaultReportProvider with ChangeNotifier {
         await _faultReportServices.getFaultReportById(id: faultReportId);
     notifyListeners();
   }
-
 
   Future loadFaultReportsbyUser({String userId}) async {
     faultreportsByUser =

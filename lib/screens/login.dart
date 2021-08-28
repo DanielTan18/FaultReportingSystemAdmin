@@ -1,14 +1,12 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fyp_admin/providers/user.dart';
 import 'package:fyp_admin/helpers/screen_navigation.dart';
 import 'package:fyp_admin/helpers/style.dart';
 import 'package:fyp_admin/screens/registration.dart';
+import 'package:fyp_admin/screens/view_reports.dart';
 import 'package:fyp_admin/widgets/custom_text.dart';
 import 'package:fyp_admin/widgets/loading.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
-
-import 'home.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -31,6 +29,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   SizedBox(
                     height: 50,
+                  ),
+                  CustomText(
+                    text: "Report-Thing",
+                    size: 36,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -85,12 +87,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: GestureDetector(
                       onTap: () async {
                         if (!await authProvider.signIn()) {
+                          // ignore: deprecated_member_use
                           _key.currentState.showSnackBar(
                               SnackBar(content: Text("Login failed!")));
                           return;
                         }
                         authProvider.clearController();
-                        changeScreenReplacement(context, Home());
+                        changeScreenReplacement(context, ViewReportsScreen());
                       },
                       child: Container(
                         decoration: BoxDecoration(

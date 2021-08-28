@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:fyp_admin/providers/user.dart';
 import 'package:fyp_admin/helpers/screen_navigation.dart';
 import 'package:fyp_admin/helpers/style.dart';
+import 'package:fyp_admin/screens/view_reports.dart';
 import 'package:fyp_admin/widgets/custom_text.dart';
 import 'package:fyp_admin/widgets/loading.dart';
 import 'package:provider/provider.dart';
 
-import 'home.dart';
 import 'login.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -104,12 +104,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     child: GestureDetector(
                       onTap: () async {
                         if (!await authProvider.signUp()) {
+                          // ignore: deprecated_member_use
                           _key.currentState.showSnackBar(
                               SnackBar(content: Text("Registration failed!")));
                           return;
                         }
                         authProvider.clearController();
-                        changeScreenReplacement(context, Home());
+                        changeScreenReplacement(context, ViewReportsScreen());
                       },
                       child: Container(
                         decoration: BoxDecoration(

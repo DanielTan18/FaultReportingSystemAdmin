@@ -1,19 +1,13 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:flushbar/flushbar.dart';
-import 'package:fyp_admin/helpers/faultreport.dart';
-import 'package:fyp_admin/models/faultreport.dart';
 import 'package:flutter/material.dart';
-import 'package:fyp_admin/providers/faultreport.dart';
-import 'package:fyp_admin/helpers/style.dart';
+import 'package:fyp_admin/helpers/faultreport.dart';
 import 'package:fyp_admin/helpers/screen_navigation.dart';
-import 'package:fyp_admin/providers/app.dart';
-import 'package:fyp_admin/providers/user.dart';
+import 'package:fyp_admin/helpers/style.dart';
+import 'package:fyp_admin/models/faultreport.dart';
 import 'package:fyp_admin/screens/gmapscreen.dart';
 import 'package:fyp_admin/widgets/custom_text.dart';
-import 'package:fyp_admin/widgets/loading.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
-import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 
 class Details extends StatefulWidget {
   final FaultReportModel faultreport;
@@ -27,7 +21,6 @@ class Details extends StatefulWidget {
 
 class _DetailsState extends State<Details> {
   double widgetOpacity = 0.0;
-  final _key = GlobalKey<ScaffoldState>();
 
   List listStatus = ["Open", "Assigned", "Fixed", "Rejected", "Completed"];
   List departmentStatus = [
@@ -60,10 +53,6 @@ class _DetailsState extends State<Details> {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserProvider>(context);
-    final app = Provider.of<AppProvider>(context);
-    final faultProvider =
-        Provider.of<FaultReportProvider>(context, listen: false);
     return Scaffold(
       body: Stack(children: [
         Positioned.fill(

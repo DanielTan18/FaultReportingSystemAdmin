@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fyp_admin/providers/app.dart';
 import 'package:fyp_admin/providers/faultreport.dart';
 import 'package:fyp_admin/providers/user.dart';
-import 'package:fyp_admin/screens/home.dart';
 import 'package:fyp_admin/screens/login.dart';
+import 'package:fyp_admin/screens/view_reports.dart';
 import 'package:fyp_admin/widgets/loading.dart';
 import 'package:provider/provider.dart';
 
@@ -37,7 +37,7 @@ class ScreensController extends StatelessWidget {
       case Status.Authenticating:
         return LoginScreen();
       case Status.Authenticated:
-        return Home();
+        return ViewReportsScreen();
       default:
         return LoginScreen();
     }
