@@ -77,7 +77,7 @@ class _ViewReportsScreenState extends State<ViewReportsScreen> {
         )),
         appBar: AppBar(
           iconTheme: IconThemeData(color: black),
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: Colors.redAccent,
           elevation: 10.0,
           centerTitle: true,
           title: CustomText(
